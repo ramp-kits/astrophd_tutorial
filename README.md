@@ -17,7 +17,7 @@ Open a terminal and
 
 #### Local notebook
 
-Get started on this RAMP with the [dedicated notebook](astrophd_tutorial_starting_kit.ipynb)
+Get started on this RAMP with the [dedicated notebook](astrophd_tutorial_starting_kit.ipynb) (NOT AVAILABLE BEFORE APRIL 9th)
 
 #### Help
 
