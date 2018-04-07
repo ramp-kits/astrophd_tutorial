@@ -1,19 +1,27 @@
 # Deep learning tutorial for Astro PhDs - Galaxy deblending
 
-[![Build Status](https://travis-ci.org/ramp-kits/mars_craters.svg?branch=master)](https://travis-ci.org/ramp-kits/astrophd_tutorial)
-
 _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
 
 #### Set up
 
-Open a terminal and
+1. install the libraries
+  - with [conda](https://www.anaconda.com/download/)
+  ```
+  conda install -y -c conda conda-env     # First install conda-env
+  conda env create                        # Use environment.yml to create the 'astrophd_tutorial' env
+  source activate astrophd_tutorial       # Activates the virtual env
+  ```
+  - without `conda` (best to use a virtual environment)
+  ```
+  python -m pip install -r requirements.txt
+  ```
 
-1. install the `ramp-workflow` library (if not already done)
+2. install the `ramp-workflow` library (if not already done)
   ```
   $ pip install git+https://github.com/paris-saclay-cds/ramp-workflow.git
   ```
 
-2. follow the `ramp-kits` instructions from the [wiki](https://github.com/paris-saclay-cds/ramp-workflow/wiki/Getting-started-with-a-ramp-kit)
+3. follow the `ramp-kits` instructions from the [wiki](https://github.com/paris-saclay-cds/ramp-workflow/wiki/Getting-started-with-a-ramp-kit)
 
 #### Local notebook
 
