@@ -129,3 +129,32 @@ def get_test_data(path='.'):
 
 def get_train_data(path='.'):
     return _read_data(path, 'train')
+
+
+def save_y_pred(y_pred, data_path, output_path, suffix):
+    """Save a prediction vector in file.
+
+    The file is (typically) in
+    submissions/<submission_name>/training_output/y_pred_<suffix>.npz or
+    submissions/<submission_name>/training_output/fold_<i>/y_pred_<suffix>.npz.
+
+    Parameters
+    ----------
+    y_pred : a prediction vector
+        a vector of predictions to be saved
+    data_path : str, (default='.')
+        the directory of the ramp-kit to be tested for submission, maybe
+        needed by problem.save_y_pred for, e.g., merging with an index vector
+    output_path : str, (default='.')
+        the directory where (typically) y_pred_<suffix>.npz will be saved
+    suffix : str, (default='test')
+        suffix in (typically) y_pred_<suffix>.npz, can be used in
+        problem.save_y_pred to, e.g., save only test predictions
+
+    """
+    y_pred_f_name = os.path.join(output_path, 'y_pred_{}'.format(suffix))
+
+    if y_pred.ndim == 3:
+        y_pred = y_pred.reshape(len(y_pred), -1)
+
+    np.savez_compressed(y_pred_f_name, y_pred=y_pred)

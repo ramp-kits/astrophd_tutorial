@@ -3,7 +3,7 @@
 
 *.egg-info
 .cache
-*__pycache__
+__pycache__
 
 .ipynb_checkpoints
 
@@ -21,3 +21,4 @@ dist/
 data/imgs
 
 data
+training_output
