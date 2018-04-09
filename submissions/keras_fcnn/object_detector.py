@@ -38,7 +38,7 @@ class ObjectDetector(object):
 
     """
 
-    def __init__(self, batch_size=32, epoch=5, model_check_point=True):
+    def __init__(self, batch_size=32, epoch=10, model_check_point=True):
         self.model_, self.params_model_ = self._build_model()
         self.batch_size = batch_size
         self.epoch = epoch
@@ -49,7 +49,8 @@ class ObjectDetector(object):
         if pretrained:
             # for showcase load weights (this is not possible
             # for an actual submission)
-            self.model_.load_weights('submissions/keras_fcnn/fcnn_weights_best.h5')
+            self.model_.load_weights(
+                'submissions/keras_fcnn/fcnn_weights_best.h5')
             return
 
         # build the box encoder to later encode y to make usable in the model
