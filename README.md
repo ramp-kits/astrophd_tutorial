@@ -1,5 +1,7 @@
 # Deep learning tutorial for Astro PhDs - Galaxy deblending
 
+[![Build Status](https://travis-ci.org/ramp-kits/astrophd_tutorial.svg?branch=master)](https://travis-ci.org/ramp-kits/astrophd_tutorial)
+
 _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
 
 #### Set up
