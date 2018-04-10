@@ -8,7 +8,7 @@ _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
 
 1. clone this repository
   ```
-  git clone https://github.com/ramp-kits/astrophd_tutorial.git
+  git clone https://github.com/ramp-kits/astrophd_tutorial
   cd astrophd_tutorial
   ```
   
@@ -37,7 +37,7 @@ _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
 
 #### Local notebook
 
-Get started on this RAMP with the [dedicated notebook](astrophd_tutorial_starting_kit.ipynb) (NOT AVAILABLE BEFORE APRIL 9th)
+Get started on this RAMP with the [dedicated notebook](astrophd_tutorial_starting_kit.ipynb)
 
 #### Help
 
