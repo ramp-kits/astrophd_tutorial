@@ -6,7 +6,13 @@ _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
 
 #### Set up
 
-1. install the libraries
+1. clone this repository
+  ```
+  git clone https://github.com/ramp-kits/astrophd_tutorial.git
+  cd astrophd_tutorial
+  ```
+  
+2. install the dependancies
   - with [conda](https://www.anaconda.com/download/)
   ```
   conda install -y -c conda conda-env     # First install conda-env
@@ -18,12 +24,16 @@ _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
   python -m pip install -r requirements.txt
   ```
 
-2. install the `ramp-workflow` library (if not already done)
+3. install the `ramp-workflow` library (if not already done)
   ```
   $ pip install git+https://github.com/paris-saclay-cds/ramp-workflow.git
   ```
 
-3. follow the `ramp-kits` instructions from the [wiki](https://github.com/paris-saclay-cds/ramp-workflow/wiki/Getting-started-with-a-ramp-kit)
+4. download the data
+  ```
+  python download_data.py        # quick-test data for testing ~16Mo
+  python download_data.py full   # full dataset ~1.5Go
+  ```
 
 #### Local notebook
 
