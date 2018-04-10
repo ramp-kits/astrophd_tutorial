@@ -157,4 +157,4 @@ def save_y_pred(y_pred, data_path, output_path, suffix):
     if y_pred.ndim == 3:
         y_pred = y_pred.reshape(len(y_pred), -1)
 
-    np.savez_compressed(y_pred_f_name, y_pred=y_pred)
+    np.savez_compressed(y_pred_f_name, y_pred=y_pred.astype(bool))
