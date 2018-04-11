@@ -4,7 +4,7 @@
 
 _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
 
-#### Set up
+### Set up
 
 1. clone this repository
   ```
@@ -30,7 +30,7 @@ _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
   python download_data.py full   # full dataset ~1.5Go
   ```
 
-#### New submissions
+### New submissions
 
 1. create a new submission "<new_sub>" by building on the existing ones
   ```
@@ -46,17 +46,17 @@ _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
 4. if the job complete, you can submit the code in the sandbox of ramp.studio
   
 
-#### Local notebook
+### Local notebook
 
 Get started on this RAMP with the [dedicated notebook](astrophd_tutorial_starting_kit.ipynb)
 
-#### Help
+### Help
 
 - Go to the `ramp-workflow` [wiki](https://github.com/paris-saclay-cds/ramp-workflow/wiki) for more help on the [RAMP](http:www.ramp.studio) ecosystem.
 - Sign up on the [CDS Slack](cds-upsay.slack.com) and join the `#phd_tutorial` channel.
 
 
-#### Acknowledgements
+### Acknowledgements
 
 We thank the CCIN2P3 for providing us with GPU time for the students to train their models during the whole week of the teaching course.
 
