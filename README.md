@@ -24,16 +24,27 @@ _Authors: Alexandre Boucaud, Marc Huertas-Company & Bertrand Rigaud_
   python -m pip install -r requirements.txt
   ```
 
-3. install the `ramp-workflow` library (if not already done)
-  ```
-  $ pip install git+https://github.com/paris-saclay-cds/ramp-workflow.git
-  ```
-
-4. download the data
+3. download the data
   ```
   python download_data.py        # quick-test data for testing ~16Mo
   python download_data.py full   # full dataset ~1.5Go
   ```
+
+#### New submissions
+
+1. create a new submission "<new_sub>" by building on the existing ones
+  ```
+  mkdir submissions/<new_sub>
+  cp submissions/keras_fcnn/object_detector.py submissions/<new_sub>/.
+  ```
+2. modify the file `submissions/<new_submission>/object_detector.py` with your favorite editor
+
+3. test it with
+  ```
+  ramp_test_submission --quick-test --submission <new_sub>
+  ```
+4. if the job complete, you can submit the code in the sandbox of ramp.studio
+  
 
 #### Local notebook
 
