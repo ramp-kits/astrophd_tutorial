@@ -33,6 +33,10 @@ class Predictions(MultiClassPredictions):
                 'Missing init argument: y_pred, y_true, or n_samples')
         self.check_y_pred_dimensions()
 
+    @classmethod
+    def combine(cls, predictions_list, index_list=None):
+        return cls(y_pred=predictions_list[0].y_pred)
+
 
 # An object implementing the workflow
 workflow = rw.workflows.ObjectDetector()
