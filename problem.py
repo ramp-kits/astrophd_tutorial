@@ -44,14 +44,13 @@ workflow = rw.workflows.ObjectDetector()
 
 def iou(y_true, y_pred):
     EPS = np.finfo(float).eps
-    y_true_b = y_true.astype(bool)
-    y_pred_b = y_pred.astype(bool)
+    y_true = y_true.astype(int)
+    y_pred = y_pred.astype(int)
+    intersection = np.sum(y_true * y_pred, axis=-1)
+    sum_ = np.sum(y_true + y_pred, axis=-1)
+    jac = (intersection + EPS) / (sum_ - intersection + EPS)
 
-    intersection = np.sum(y_true_b & y_pred_b, axis=-1)
-    sum_ = np.sum(y_true_b | y_pred_b, axis=-1)
-    jaccard = (intersection + EPS) / (sum_ + EPS)
-
-    return jaccard
+    return jac
 
 
 class DeblendingScore(BaseScoreType):
