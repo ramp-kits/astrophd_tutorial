@@ -201,5 +201,7 @@ def save_y_pred(y_pred, data_path, output_path, suffix):
 
     # Make sure array is rounded
     y_pred = y_pred.round()
+    # Convert to boolean to save space and enble high compression
+    y_pred = y_pred.astype(bool)
 
-    np.savez_compressed(y_pred_f_name, y_pred=y_pred.round().astype(bool))
+    np.savez_compressed(y_pred_f_name, y_pred=y_pred)
