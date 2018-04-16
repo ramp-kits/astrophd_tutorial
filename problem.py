@@ -18,11 +18,9 @@ class Predictions(MultiClassPredictions):
 
     def __init__(self, y_pred=None, y_true=None, n_samples=None):
         if y_pred is not None:
-            size = len(y_pred)
-            self.y_pred = np.reshape(y_pred, (size, self.n_columns))
+            self.y_pred = np.reshape(y_pred, (len(y_pred), self.n_columns))
         elif y_true is not None:
-            size = len(y_true)
-            y_true = np.reshape(y_true, (size, self.n_columns))
+            y_true = np.reshape(y_true, (len(y_true), self.n_columns))
             # self._init_from_pred_labels(y_true)
             self.y_pred = y_true
         elif n_samples is not None:
