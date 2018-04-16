@@ -40,13 +40,50 @@ class Predictions(MultiClassPredictions):
 workflow = rw.workflows.ObjectDetector()
 
 
-def iou(y_true, y_pred):
+def iou_bitmap(y_true, y_pred, verbose=False):
+    """
+    Compute the IoU between two arrays
+
+    If the arrays are probabilities (floats) instead of predictions (integers
+    or booleans) they are automatically rounded to the nearest integer and
+    converted to bool before the IoU is computed.
+
+    Parameters
+    ----------
+    y_true : ndarray
+        array of true labels
+    y_pred : ndarray
+        array of predicted labels
+    verbose : bool (optional)
+        print the intersection and union separately
+
+    Returns
+    -------
+    float :
+        the intersection over union (IoU) value scaled between 0.0 and 1.0
+
+    """
     EPS = np.finfo(float).eps
-    y_true = y_true.astype(int)
-    y_pred = y_pred.astype(int)
-    intersection = np.sum(y_true * y_pred, axis=-1)
-    sum_ = np.sum(y_true + y_pred, axis=-1)
+
+    # Make sure each pixel was predicted e.g. turn probability into prediction
+    if y_true.dtype in [np.float32, np.float64]:
+        y_true = y_true.round().astype(bool)
+
+    if y_pred.dtype in [np.float32, np.float64]:
+        y_pred = y_pred.round().astype(bool)
+
+    # Reshape to 1d
+    y_true = y_true.ravel()
+    y_pred = y_pred.ravel()
+
+    # Compute intersection and union
+    intersection = np.sum(y_true * y_pred)
+    sum_ = np.sum(y_true + y_pred)
     jac = (intersection + EPS) / (sum_ - intersection + EPS)
+
+    if verbose:
+        print('Intersection:', intersection)
+        print('Union:', sum_ - intersection)
 
     return jac
 
@@ -63,8 +100,11 @@ class DeblendingScore(BaseScoreType):
         self.precision = precision
 
     def __call__(self, y_true, y_pred):
-        iou_score = iou(y_true, y_pred)
-        return np.mean(iou_score)
+        iou_list = [iou_bitmap(yt, yp)
+                    for (yt, yp) in zip(y_true, y_pred)]
+        iou = np.mean(iou_list)
+
+        return iou
 
 
 score_types = [
@@ -156,7 +196,10 @@ def save_y_pred(y_pred, data_path, output_path, suffix):
     """
     y_pred_f_name = os.path.join(output_path, 'y_pred_{}'.format(suffix))
 
-    if y_pred.ndim == 3:
+    if y_pred.ndim > 2:
         y_pred = y_pred.reshape(len(y_pred), -1)
 
-    np.savez_compressed(y_pred_f_name, y_pred=y_pred.astype(bool))
+    # Make sure array is rounded
+    y_pred = y_pred.round()
+
+    np.savez_compressed(y_pred_f_name, y_pred=y_pred.round().astype(bool))
